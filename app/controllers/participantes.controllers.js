@@ -56,8 +56,8 @@ exports.findAll = (req, res) => {
 // Find a single Parti with an id
 exports.findOne = (req, res) => {
 
-    const id = req.params.id;
-
+  const id = req.params.id;
+console.log("Hola");
   Parti.findByPk(id)
     .then(data => {
       if (data) {

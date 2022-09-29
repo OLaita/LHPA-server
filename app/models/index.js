@@ -21,5 +21,19 @@ db.sequelize = sequelize;
 
 db.premios = require("./premios.model.js")(sequelize, Sequelize);
 db.participantes = require("./participantes.model.js")(sequelize, Sequelize);
+db.role = require("./role.model.js")(sequelize, Sequelize);
+
+db.role.belongsToMany(db.participantes, {
+  through: "user_roles",
+  foreignKey: "roleId",
+  otherKey: "userId"
+});
+db.participantes.belongsToMany(db.role, {
+  through: "user_roles",
+  foreignKey: "userId",
+  otherKey: "roleId"
+});
+
+db.ROLES = ["user", "admin", "moderator"];
 
 module.exports = db;
