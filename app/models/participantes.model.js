@@ -1,11 +1,21 @@
 module.exports = (sequelize, Sequelize) => {
     const Participante = sequelize.define("participante", {
+      username: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
       nombre: {
         type: Sequelize.STRING
       },
       votado: {
-        type: Sequelize.BOOLEAN
-      }
+        type: 'BOOLEAN',
+        defaultValue: false
+      },
+      updatedAt: {
+        type: "TIMESTAMP"
+      },
     },
     { timestamps: false });
   
